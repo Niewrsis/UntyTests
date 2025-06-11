@@ -24,7 +24,7 @@ public class PlayerMovementTests
     [TearDown]
     public void Teardown()
     {
-        Object.DestroyImmediate(playerObj); // Заменяем Destroy на DestroyImmediate
+        Object.DestroyImmediate(playerObj);
     }
 
     [Test]
@@ -48,16 +48,16 @@ public class PlayerMovementTests
 
         var ground = new GameObject("Ground");
         ground.AddComponent<BoxCollider2D>();
-        ground.layer = LayerMask.NameToLayer("Ground"); // Убедись, что слой совпадает с groundLayer в PlayerController
+        ground.layer = LayerMask.NameToLayer("Ground");
         ground.transform.position = playerObj.transform.position - new Vector3(0, 1f, 0);
 
-        yield return null; // В Edit Mode можно только yield return null
+        yield return null;
 
         player.Jump();
         float initialYVelocity = rb.velocity.y;
 
         Assert.Greater(initialYVelocity, 0f);
-        Object.DestroyImmediate(ground); // Заменяем Destroy
+        Object.DestroyImmediate(ground);
     }
 
     [Test]
